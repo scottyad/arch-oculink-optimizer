@@ -47,8 +47,4 @@ This causes:
 Deploy the core optimization engine directly to your Arch installation with a single automated payload:
 
 ```bash
-curl -sSL [https://raw.githubusercontent.com/your-username/arch-oculink-optimizer/main/optimize-system.sh](https://raw.githubusercontent.com/your-username/arch-oculink-optimizer/main/optimize-system.sh) | sudo bash
-
-STOREFRONT
-
-echo "[+] Storefront '$TARGET_README' has been generated successfully."
+curl -sSL [https://raw.githubusercontent.com/scottyad/arch-oculink-optimizer/main/optimize-system.sh](https://raw.githubusercontent.com/scottyad/arch-oculink-optimizer/main/optimize-system.sh) | sudo bash
