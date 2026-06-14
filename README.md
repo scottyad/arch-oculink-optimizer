@@ -1,13 +1,13 @@
-# 🚀 Arch Linux Performance & Oculink eGPU Optimization Engine
+# 🚀 Universal Linux Performance & Oculink eGPU Optimization Engine
 
-An automated, idempotent system tuning utility engineered specifically for **Small Form Factor (SFF) Mini PCs** running Arch Linux (`linux-zen`) paired with external graphics infrastructure (**Oculink / dedicated PCIe links**). 
+An automated, idempotent system tuning utility engineered specifically for **Small Form Factor (SFF) Mini PCs** running modern Linux distributions (including Arch Linux, Fedora, Ubuntu, and Debian) paired with external graphics infrastructure (**Oculink / dedicated PCIe links**). 
 
 This engine eliminates aggressive power-state downshifting, bypasses mobile driver thermal throttling, stabilizes LUKS storage hooks, and tunes virtual memory boundaries to guarantee zero-latency throughput for heavy developer compute, deep learning inference, and high-frame-rate rendering.
 
 ---
 
 ## ⚡ The Core Problem (Why This Exists)
-Standard Linux distributions are aggressively optimized for laptop power conservation. When running a desktop discrete card (like an **NVIDIA RTX 3060 12GB**) through a dedicated Oculink interface, the kernel's default power governors constantly drop the link down to PCIe Gen 1 speeds during idle periods. 
+Standard Linux distributions are aggressively optimized for mobile power conservation. When running a desktop discrete graphics card through a dedicated Oculink interface, the kernel's default power governors constantly drop the link down to PCIe Gen 1 speeds during idle periods. 
 
 This causes:
 * **Micro-stuttering & Latency Spikes** as the link forces its way back to Gen 4 speeds under load.
@@ -22,16 +22,16 @@ This causes:
 
 | Feature Pillar | Target System | Technical Mechanism |
 | :--- | :--- | :--- |
-| **PCIe Link Locking** | Bootloader / Bus | Complete bypass of `pcie_port_pm` and `pcie_aspm` power saving parameters. |
-| **NVIDIA Rigging** | Modprobe / Driver | Injects `NVreg_Mobile=0` and forces PowerMizer registry keys to `0x1` (Max Perf). |
+| **PCIe Link Locking** | Bootloader / Bus | Complete bypass of universal `pcie_port_pm` and `pcie_aspm` power saving parameters. |
+| **NVIDIA Rigging** | Modprobe / Driver | Injects `NVreg_Mobile=0` and forces PowerMizer registry keys to `0x1` (Max Perf) across supported architectures. |
 | **Real-Time Scheduler** | Kernel (`sysctl`) | Fine-tunes `vm.dirty_ratio` and disables split-lock mitigation performance penalties. |
-| **Storage Safeguards** | Initramfs / LUKS | Verifies `sd-encrypt` sequencing directly before block device hooks prior to image rebuilds. |
+| **Storage Safeguards** | Initramfs / LUKS | Verifies `sd-encrypt` or volume initialization blocks prior to system image rebuilds. |
 
 ---
 
 ## 📦 Fast Installation
 
-Deploy the core optimization engine directly to your Arch installation with a single automated payload:
+Deploy the core optimization engine directly to your system with a single automated payload:
 
 ```bash
-curl -sSL [https://raw.githubusercontent.com/scottyad/arch-oculink-optimizer/main/optimize-system.sh](https://raw.githubusercontent.com/scottyad/arch-oculink-optimizer/main/optimize-system.sh) | sudo bash
+curl -sSL [https://raw.githubusercontent.com/scottyad/Universal-Linux-Oculink-eGPU-Performance-Optimizer/main/optimize-system.sh](https://raw.githubusercontent.com/scottyad/Universal-Linux-Oculink-eGPU-Performance-Optimizer/main/optimize-system.sh) | sudo bash
